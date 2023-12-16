@@ -3,6 +3,7 @@ import {View, TouchableOpacity, Text, Alert} from 'react-native';
 import TextInputWithLabel from '../components/TextInputWithLabel';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import CustomButton from '../components/CustomButton';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 const AddEmployeeScreen: React.FC = ({navigation}: any) => {
   const [firstName, setFirstName] = React.useState('');
@@ -59,6 +60,12 @@ const AddEmployeeScreen: React.FC = ({navigation}: any) => {
         }}>
         Enter employee details
       </Text>
+        <KeyboardAwareScrollView
+        extraHeight={30}
+        automaticallyAdjustContentInsets={true}
+        enableAutomaticScroll={true}
+        keyboardShouldPersistTaps={'handled'}
+        showsVerticalScrollIndicator={false}>
       <TextInputWithLabel
         label="First Name"
         value={firstName}
@@ -82,6 +89,7 @@ const AddEmployeeScreen: React.FC = ({navigation}: any) => {
       />
 
       <CustomButton onPress={saveEmployee} label={'Save'} />
+           </KeyboardAwareScrollView>
     </View>
   );
 };
